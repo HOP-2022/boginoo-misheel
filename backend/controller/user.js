@@ -50,7 +50,7 @@ const BoginooModel = require('../models/user');
 exports.createBoginoo = async (req, res) => {
     const {originalUrl} = req.body
     try{
-        const createdBoginoo = await BoginooModel.create(...originalUrl)
+        const createdBoginoo = await BoginooModel.create({...req.body})
         res.status(201).json({message:"Created successfully", data: createdBoginoo})
     }catch(error){
         res.status(400).json({message:"Request rejected", error})
