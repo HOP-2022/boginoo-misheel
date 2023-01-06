@@ -69,9 +69,9 @@ export const Home = () => {
           <input
             style={styles.input}
             placeholder="https://www.web-huudas.mn"
-            type="email"
+            type="link"
           />
-          <button type="submit" style={styles.green}>
+          <button  type="submit" style={styles.green}>
             богиносгох
           </button>
         </div>
