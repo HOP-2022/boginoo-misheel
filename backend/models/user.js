@@ -1,16 +1,10 @@
- const {Schema, model} = require('mongoose');
 const mongoose = require("mongoose")
-
-
 
 const boginooSchema = new mongoose.Schema({
     originalUrl: String,
-    shortUrl:{
-        type: String,
-        required: false
-    }
+    shortUrl:String,
+    id: String
 });
 
-const boginoo = model('boginoo', boginooSchema);
-module.exports = boginoo;
+module.exports = mongoose.model("Link", boginooSchema);
 

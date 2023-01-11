@@ -2,13 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    createBoginoo,
-    getBoginoo,
-    updateBoginoo
+    createLink,
+    getLinks,
+    getLink
 } = require('../controller/user');
 
 router 
- .post('/', createBoginoo)
+ .get('/', getLinks)
+ .post('/', createLink)
+ .get('/:id', getLink)
 //  .get('/:id', getBoginoo)
 // .put('/:id)', updateBoginoo)
 

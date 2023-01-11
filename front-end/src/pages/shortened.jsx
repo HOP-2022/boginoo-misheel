@@ -1,23 +1,26 @@
-import {React, useState} from "react";
+import { useState} from "react";
 import pic from "../components/logo1.png";
-import CopyToClipboard from "react-copy-to-clipboard";
+import {LinkComp} from "../components/link"
 import axios from 'axios'
 
 export const Short = () => {
   const [userInput, setUserInput] = useState("");
-  const [shortenedLink, setShortenedLink] = useState("");
-  const fetchData = async () => {
-    try {
-      const response = await axios(
-        `https://api.shrtco.de/v2/shorten?url=${userInput}`
-      );
-      setShortenedLink(response.data.result.full_short_link);
-    } catch (e) {
-      console.log(e);
-    }
+  const [shortenedLink1, setShortenedLink1] = useState();
+  const [shortenedLink2, setShortenedLink2] = useState();
+ 
+  const create = async () => {
+    await axios
+        .post("http://localhost:8000/",{url : userInput})
+        .then((response) => {
+          console.log(response)
+          setShortenedLink1(response.data.data.originalUrl);
+          setShortenedLink2(response.data.data.shortUrl);
+        })
+        .catch ((error) =>  {
+      console.log(error);
+    });
+    setUserInput("");
   };
-
-
 
 
   const styles = {
@@ -112,28 +115,27 @@ export const Short = () => {
             style={styles.input}
              placeholder="https://www.web-huudas.mn"
           />
-          <button   onClick={() => {
-              fetchData();
-               }}
+          <button   onClick={create}
              style={styles.green}>
             богиносгох
           </button>
         </div>
-        <div style={styles.plus}>
+        {/* <div style={styles.plus}>
       <div style={styles.grey}>
       Өгөгдсөн холбоос <div style={styles.black}>{userInput}</div>
       </div>
       <br></br>
       <div>
       <div style={styles.grey}>
-        Богино холбоос <div style={styles.black}>{shortenedLink}</div>
-        <br></br>
-      <CopyToClipboard text={shortenedLink}>
+        Богино холбоос <div style={styles.black}>{setShortenedLink2}</div>
+        <br></br> */}
+        <LinkComp link={shortenedLink1} short={shortenedLink2} />
+      {/* <CopyToClipboard text={shortenedLink}>
      <button style={styles.greenunderline}> Хуулж авах</button> 
-     </CopyToClipboard>
+     </CopyToClipboard> */}
+     {/* </div>
      </div>
-     </div>
-     </div>
+     </div> */}
       </div>
     </div>
   );
