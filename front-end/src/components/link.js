@@ -100,4 +100,11 @@ export const LinkComp = ({link, short}) => {
             </div>
         </div>
     )
+
+
+    // {history.map((item, index) => {
+    //   return (
+    //     <div id={index}>{item.shortUrl}</div>
+    //   )
+    // })}
 }

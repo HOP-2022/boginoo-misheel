@@ -7,12 +7,12 @@ export const Short = () => {
   const [userInput, setUserInput] = useState("");
   const [shortenedLink1, setShortenedLink1] = useState();
   const [shortenedLink2, setShortenedLink2] = useState();
- 
+  // const [history, setHistory] = useState();
   const create = async () => {
     await axios
         .post("http://localhost:8000/",{url : userInput})
         .then((response) => {
-          console.log(response)
+
           setShortenedLink1(response.data.data.originalUrl);
           setShortenedLink2(response.data.data.shortUrl);
         })
@@ -22,6 +22,17 @@ export const Short = () => {
     setUserInput("");
   };
 
+  // useEffect(() => {
+  //   axios
+  //   .get("http://localhost:8000/")
+  //   .then((response) => {
+  //     // console.log(response.data.data)
+  //     setHistory(response.data.data);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  // }, []);
 
   const styles = {
     header: {
@@ -130,6 +141,16 @@ export const Short = () => {
         Богино холбоос <div style={styles.black}>{setShortenedLink2}</div>
         <br></br> */}
         <LinkComp link={shortenedLink1} short={shortenedLink2} />
+
+
+
+
+
+        {/* {history.map((item, index) => {
+          return (
+            <div id={index}>{item.shortUrl}</div>
+          )
+        })}  */}
       {/* <CopyToClipboard text={shortenedLink}>
      <button style={styles.greenunderline}> Хуулж авах</button> 
      </CopyToClipboard> */}

@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require('cors');
 const app = express();
 const port = 8000;
-const boginooRoute = require('./router/user');
+const boginooRoute = require('./router/link');
 const connect = require('./database')
 connect()
 

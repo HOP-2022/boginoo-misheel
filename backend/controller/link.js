@@ -1,4 +1,4 @@
-const Link = require("../models/user");
+const Link = require("../models/link");
 const crypto = require("crypto");
 
 exports.getLinks = async (req, res, next) => {

@@ -1,9 +1,23 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 import pic from "../components/logo1.png";
-import original from "./originalUrl.json";
-import short from "./shortUrl.json"
+import axios from 'axios'
+import { RenderLink } from "../components/RenderLink";
 
 export const History = () => {
+
+const [history, setHistory] = useState();
+  // useEffect(() => {
+  //   axios
+  //   .get("http://localhost:8000/")
+  //   .then((response) => {
+  //     // console.log(response.data.data)
+  //     setHistory(response.data.data);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  // }, []); 
+
   const styles = {
     header: {
       display: "flex",
@@ -70,7 +84,10 @@ export const History = () => {
         flexDirection:"row",
     },
     black:{
-      color:"black"
+      height: "15px",
+      width: "100%",
+     color:"black",
+      fontSize:"15px",
     },
     history:{
         color:"#02B589",
@@ -85,9 +102,22 @@ export const History = () => {
         backgroundColor:"white",
        shadow:"null"
    },
+   new2:{
+    display:"flex",
+    width:'100vw',
+    justifyContent:"space-between",
+    flexDirection:"column"
+   },
+   all:{
+    height:"100vh"
+   },
+   links:{
+    height:"200px",
+    width:"100px"
+   },
   };
   return (
-    <div>
+    <div style={styles.all}>
       <div style={styles.header}>
         <div style={styles.white}>хэрхэн ажилладаг вэ?</div>
         <div style={styles.green}>нэвтрэх</div>
@@ -104,26 +134,32 @@ export const History = () => {
             богиносгох
           </button>
         </div>
-      </div>
+      <div style={styles.new2}>
       <div style={styles.history}>Түүх</div>
+      <br></br>
       <div style={styles.new}>
         <div style={styles.grey}>Өгөгдсөн холбоос:
-            <div style={styles.black}>{original}</div>
+            <div style={styles.black}>
+            </div>
         </div>
         <div style={styles.grey}>Богино холбоос:
-        <div>
-            <div style={styles.black}>{short}</div>
+        <div style={styles.links}>
+            <div style={styles.height}s>
+            {history.map(() => {
+          return (
+            <div > <RenderLink />
             <button 
-            style={styles.greenunderline}
-            onClick={() => {
-                navigator.clipboard.writeText();
-            }}
-            >
+            style={styles.greenunderline}>
                Хуулж авах
-            </button>
+            </button></div>
+          )
+        })}
+            </div>
             </div>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ const {
     createLink,
     getLinks,
     getLink
-} = require('../controller/user');
+} = require('../controller/link');
 
 router 
  .get('/', getLinks)
@@ -15,4 +15,3 @@ router
 // .put('/:id)', updateBoginoo)
 
  module.exports = router;
- 
