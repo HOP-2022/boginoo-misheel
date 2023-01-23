@@ -1,5 +1,7 @@
 import React from "react";
 import pic from "../components/logo1.png";
+import {sendRequest} from "../utils/Api";
+// const { data } = await sendRequest(`getLink/${val}`, "GET");
 
 export const Login = () => {
   const styles = {
@@ -11,7 +13,7 @@ export const Login = () => {
     },
     green: {
       backgroundColor: "#02B589",
-      width: "183px",
+      width: "383px",
       height: "44px",
       borderRadius: "100px",
       fontSize: "20px",
@@ -45,7 +47,6 @@ export const Login = () => {
     },
     column: {
       display: "flex",
-      width: "100vw",
       flexDirection:"column",
       justifyContent:"center"
     },
@@ -59,13 +60,48 @@ export const Login = () => {
     },
     black:{
         color:"black",
-        textDecoration:"underline"
+        textDecoration:"underline",
+        margin:"20px"
     },
     greenunderline:{
         textDecoration:"underline",
-        color:"#02B589"
+        color:"#02B589",
+        width:"383px",
+        display:"flex",
+        justifyContent:"center"
+    },
+    row:{
+      display:"flex",
+      flexDirection:"row",
+      margin:"15px",
+      width:"581px",
+      justifyContent:"space-between"
+    },
+    bold:{
+      color: "#02B589",
+      fontSize: "25px",
+      display: "flex",
+      fontWeight:"bold",
+      justifyContent:"center"
+    },
+    center:{
+      display:"flex",
+      flexDirection:"column",
+      justifyContent:"center",
+      alignItems:"center"
+    },
+    check:{
+      accentColor:"#02B589"
     }
   };
+  const log = async () => {
+    try{
+      const {data}= await sendRequest(`logiin/`, "POST", {email: "",password: ""});
+    }catch(error) {
+      const a = error.response.data
+      alert(a.error.message)
+    }
+  }
   return (
     <div>
       <div style={styles.header}>
@@ -73,23 +109,32 @@ export const Login = () => {
       </div>
       <div style={styles.main}>
         <img style={styles.logo} src={pic} alt="" />
+        <br></br>
+        <br></br>
         <div style={styles.column}>
-            <div>Нэвтрэх</div>
-            <form>
-            <label for="email">Цахим хаяг</label><br></br>
-            <input placeholder="name@mail.domain" type="email"/>
-            <label for="pwd">Нууц үг</label><br></br>
-            <input placeholder="........" type="password"/>
-            </form>
+            <div style={styles.bold}>Нэвтрэх</div>
             <div>
+              <div style={styles.column}>
+            <label for="email">Цахим хаяг</label>
+            <input style={styles.input} placeholder="name@mail.domain" type="email" />
+            </div>
+            <br></br>
+            <div style={styles.column}>
+            <label for="pwd">Нууц үг</label>
+            <input style={styles.input}  placeholder="........" type="password"/>
+            </div>
+            </div>
+            <div style={styles.row}>
                 <div style={styles.white}> 
-                    <input type="checkbox" />
+                    <input style={styles.check} type="checkbox" />
                     <div>Намайг сана</div>
                 </div>
                 <div style={styles.black}>Нууц үгээ мартсан</div>
             </div>
+            <div style={styles.center}>
             <div style={styles.green}>нэвтрэх</div>
             <div style={styles.greenunderline}>Шинэ хэрэглэгч бол энд дарна уу</div>
+            </div>
         </div>
       </div>
     </div>

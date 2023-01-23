@@ -1,5 +1,6 @@
 const express = require('express');
-const router = express.Router();
+
+const { auth } = require ("../middlewares/auth")
 
 const {
     createLink,
@@ -7,11 +8,11 @@ const {
     getLink
 } = require('../controller/link');
 
+const router = express.Router();
+
 router 
- .get('/', getLinks)
- .post('/', createLink)
- .get('/:id', getLink)
-//  .get('/:id', getBoginoo)
-// .put('/:id)', updateBoginoo)
+ .get('/', auth, getLinks)
+ .post('/',  auth,createLink)
+ .get('/:id',  auth, getLink)
 
  module.exports = router;
