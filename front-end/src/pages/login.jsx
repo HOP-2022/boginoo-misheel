@@ -1,7 +1,7 @@
 import React from "react";
 import pic from "../components/logo1.png";
 import {sendRequest} from "../utils/Api";
-// const { data } = await sendRequest(`getLink/${val}`, "GET");
+
 
 export const Login = () => {
   const styles = {
@@ -94,9 +94,11 @@ export const Login = () => {
       accentColor:"#02B589"
     }
   };
+  
   const log = async () => {
     try{
       const {data}= await sendRequest(`logiin/`, "POST", {email: "",password: ""});
+      
     }catch(error) {
       const a = error.response.data
       alert(a.error.message)

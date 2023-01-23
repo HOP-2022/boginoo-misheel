@@ -11,8 +11,8 @@ const {
 const router = express.Router();
 
 router 
- .get('/', auth, getLinks)
- .post('/',  auth,createLink)
- .get('/:id',  auth, getLink)
+ .get('/', getLinks)
+ .post('/', createLink)
+ .get('/:id',  getLink)
 
  module.exports = router;

@@ -159,7 +159,7 @@ export const History = () => {
           <div style={styles.history}>Түүх</div>
           <br></br>
           {history && history.map((item,index)=> {
-            return <LinkComponent link={item.originalUrl} short={item.shortUrl} />
+            return <LinkComponent link={item.originalUrl} short={item.shortUrl} key={index}/>
           })}
         </div>
       </div>
