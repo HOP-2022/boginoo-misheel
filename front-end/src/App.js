@@ -5,6 +5,7 @@ import {Short} from "./pages/shortened";
 import {History} from "./pages/history";
 import {Login} from "./pages/login";
 import {SignUp} from "./pages/signUp";
+import { ForgotPass } from './pages/forgotPass';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
     {/* <Short/> */}
     {/* <History/> */}
   {/* <Login/> */}
-  <SignUp/>
+  {/* <SignUp/> */}
+    <ForgotPass/>
     </div>
   );
 }
