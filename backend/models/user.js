@@ -5,5 +5,5 @@ const boginooSchema = new mongoose.Schema({
    password:String,
 });
 
-module.exports = mongoose.model("Link", boginooSchema);
+module.exports = mongoose.model("User", boginooSchema);
 

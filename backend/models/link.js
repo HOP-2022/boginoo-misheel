@@ -4,7 +4,10 @@ const boginooSchema = new mongoose.Schema({
     originalUrl: String,
     shortUrl:String,
     id: String,
-    userId:String,
+    userId:{
+        type:  mongoose.Schema.ObjectId,
+        ref: "User",
+    }
 });
 
 module.exports = mongoose.model("Link", boginooSchema);

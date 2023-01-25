@@ -114,6 +114,9 @@ const LinkComponent = ({link, short}) => {
                   {short}
                 </div>
                 <button
+                 onClick={() => {
+                  navigator.clipboard.writeText(short);
+              }}
                 >
                   Хуулж авах
                 </button>

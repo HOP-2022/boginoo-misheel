@@ -4,14 +4,16 @@ import './App.css';
 import {Short} from "./pages/shortened";
 import {History} from "./pages/history";
 import {Login} from "./pages/login";
+import {SignUp} from "./pages/signUp";
 
 function App() {
   return (
     <div>
     {/* <Home/> */}
     {/* <Short/> */}
-    <History/>
-    {/* <Login/> */}
+    {/* <History/> */}
+  {/* <Login/> */}
+  <SignUp/>
     </div>
   );
 }

@@ -2,7 +2,7 @@ const Link = require("../models/link");
 const crypto = require("crypto");
 
 exports.getLinks = async (req, res, next) => {
-    const links = await Link.find({userId: req.id});
+    const links = await Link.find({userId: req.id}).populate("userId");
     res.status(200).json({
         success:true,
         data:links,

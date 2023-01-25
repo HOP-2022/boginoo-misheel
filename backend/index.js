@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 const port = 8000;
 const boginooRoute = require('./router/link');
+const userRoute = require ('./router/user');
 const connect = require('./database')
 connect()
 
@@ -14,7 +15,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use('/', boginooRoute);
+app.use('/link', boginooRoute);
+app.use('/user', userRoute);
+
 
 app.listen(port, () => {
     console.log(`Server is running at localhost:${port}`);

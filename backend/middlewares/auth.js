@@ -7,7 +7,7 @@ module.exports.auth = (req, res, next) => {
         if(token){
             token = token.split(' ')[1];
             let user = jwt.verify(token, SECRET_KEY);
-            req.userId = user.indexOf;
+            req.userId = user.id;
             // req.name = user.name;
             next();
         }else{

@@ -1,6 +1,7 @@
+// import axios from "axios";
 import React from "react";
 import pic from "../components/logo1.png";
-import {sendRequest} from "../utils/Api";
+// import {sendRequest} from "../utils/Api";
 
 
 export const Login = () => {
@@ -95,15 +96,29 @@ export const Login = () => {
     }
   };
   
-  const log = async () => {
-    try{
-      const {data}= await sendRequest(`logiin/`, "POST", {email: "",password: ""});
+  // const log = async () => {
+  //   axios
+  //   .get(URL, {
+  //     params:{
+  //       email:email.current.value,
+  //       password: password.current.value,
+  //     }
+  //   })
+  //   .then(function(res) {
+  //     console.log(res);
+  //     window.location.replace("/");
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error)
+  //   });
+  //   try{
+  //     const {data}= await sendRequest(`logiin/`, "POST", {email: "",password: ""});
       
-    }catch(error) {
-      const a = error.response.data
-      alert(a.error.message)
-    }
-  }
+  //   }catch(error) {
+  //     const a = error.response.data
+  //     alert(a.error.message)
+  //   }
+  // }
   return (
     <div>
       <div style={styles.header}>
@@ -118,7 +133,7 @@ export const Login = () => {
             <div>
               <div style={styles.column}>
             <label for="email">Цахим хаяг</label>
-            <input style={styles.input} placeholder="name@mail.domain" type="email" />
+            <input style={styles.input} placeholder="name@mail.domain" type="email"  />
             </div>
             <br></br>
             <div style={styles.column}>
@@ -134,7 +149,7 @@ export const Login = () => {
                 <div style={styles.black}>Нууц үгээ мартсан</div>
             </div>
             <div style={styles.center}>
-            <div style={styles.green}>нэвтрэх</div>
+            <button style={styles.green}>нэвтрэх</button>
             <div style={styles.greenunderline}>Шинэ хэрэглэгч бол энд дарна уу</div>
             </div>
         </div>

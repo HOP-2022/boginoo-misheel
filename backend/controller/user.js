@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { result } = require("lodash");
-const User = require("../models/user")
+const User = require("../models/user");
 const SECRET_KEY = 'itssecretkey';
 
 exports.signup = async (req, res, next) => {
@@ -16,7 +15,7 @@ exports.signup = async (req, res, next) => {
             password:hashedPassword
         });
         const token = jwt.sign({email:result.email, id: result._id}, SECRET_KEY);
-        res.status(201).json({user:result, token:token});
+        res.status(201).json({user:result, token:"bearer "+token});
     } catch(error){
         console.log(error);
         res.status(500).json({message:"ymar negenzuil buruu baina"});
@@ -40,4 +39,4 @@ exports. login = async(req, res, next) => {
         console.log(error);
         res.status(500).json({message:"ymar negen zuil buruu baina"});
     }
-}
+};
